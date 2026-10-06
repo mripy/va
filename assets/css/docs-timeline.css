@@ -1,0 +1,236 @@
+/* =====================================================
+   Documentos Públicos — línea de tiempo por período
+   ===================================================== */
+
+.docs-tl {
+	position: relative;
+	margin-top: 45px;
+	padding-left: 96px
+}
+
+/* Línea vertical de la línea de tiempo */
+.docs-tl::before {
+	content: "";
+	position: absolute;
+	left: 87px;
+	top: 8px;
+	bottom: 12px;
+	width: 2px;
+	background: #e4ece8
+}
+
+.docs-tl-year {
+	position: relative;
+	margin-bottom: 46px
+}
+
+.docs-tl-year:last-child {
+	margin-bottom: 0
+}
+
+/* Nodo del período */
+.docs-tl-year::before {
+	content: "";
+	position: absolute;
+	left: -16px;
+	top: 5px;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background: #fff;
+	border: 3px solid #cfe0d8;
+	transition: border-color .3s ease
+}
+
+.docs-tl-year--current::before {
+	border-color: #40896c;
+	box-shadow: 0 0 0 5px rgba(64, 137, 108, .12)
+}
+
+.docs-tl-year__head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 22px
+}
+
+.docs-tl-year__label {
+	display: inline-block;
+	font-size: 22px;
+	font-weight: 600;
+	color: #0b1c39;
+	letter-spacing: .5px;
+	line-height: 1.2
+}
+
+.docs-tl-year--current .docs-tl-year__label {
+	color: #40896c
+}
+
+.docs-tl-year__tag {
+	display: inline-block;
+	padding: 4px 12px;
+	border-radius: 20px;
+	background: rgba(64, 137, 108, .1);
+	color: #40896c;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 1.2px;
+	text-transform: uppercase
+}
+
+.docs-tl-year__rule {
+	flex: 1 1 auto;
+	height: 1px;
+	min-width: 30px;
+	background: #e9efec
+}
+
+/* Tarjetas de documentos */
+.docs-tl-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 18px
+}
+
+.docs-tl-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: 24px 26px 22px;
+	background: #fff;
+	border: 1px solid #eceff1;
+	border-left: 3px solid #d5e2dc;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(11, 28, 57, .04);
+	transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease
+}
+
+.docs-tl-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 14px 28px rgba(11, 28, 57, .1);
+	border-left-color: #40896c
+}
+
+.docs-tl-card--current {
+	border-left-color: #40896c;
+	background: #fbfdfc
+}
+
+.docs-tl-card__code {
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 1.4px;
+	text-transform: uppercase;
+	color: #40896c
+}
+
+.docs-tl-card__title {
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.45;
+	color: #0b1c39;
+	margin: 8px 0 6px
+}
+
+.docs-tl-card__title a {
+	color: #0b1c39;
+	transition: color .25s ease
+}
+
+.docs-tl-card__title a:hover {
+	color: #40896c
+}
+
+/* Toda la tarjeta es clicable (stretched link) */
+.docs-tl-card__title a::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 8px
+}
+
+.docs-tl-card__title a:focus-visible {
+	outline: 0
+}
+
+.docs-tl-card:focus-within {
+	box-shadow: 0 0 0 3px rgba(64, 137, 108, .35), 0 14px 28px rgba(11, 28, 57, .1);
+	border-left-color: #40896c
+}
+
+.docs-tl-card__meta {
+	font-size: 13px;
+	line-height: 1.6;
+	color: #6b7a90;
+	margin: 0 0 18px
+}
+
+.docs-tl-card__btn {
+	margin-top: auto;
+	align-self: flex-start;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px 20px;
+	border: 2px solid #40896c;
+	border-radius: 5px;
+	color: #40896c;
+	background: transparent;
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: 1.2px;
+	text-transform: uppercase;
+	transition: background .3s ease, color .3s ease
+}
+
+.docs-tl-card:hover .docs-tl-card__btn,
+.docs-tl-card:focus-within .docs-tl-card__btn {
+	background: #40896c;
+	color: #fff
+}
+
+.docs-tl-note {
+	margin-top: 30px;
+	font-size: 13px;
+	color: #6b7a90
+}
+
+/* ============ Responsive ============ */
+
+@media (max-width: 991px) {
+	.docs-tl {
+		padding-left: 60px
+	}
+
+	.docs-tl::before {
+		left: 51px
+	}
+
+	.docs-tl-grid {
+		grid-template-columns: minmax(0, 1fr)
+	}
+}
+
+@media (max-width: 575px) {
+	.docs-tl {
+		padding-left: 34px
+	}
+
+	.docs-tl::before {
+		left: 25px
+	}
+
+	.docs-tl-year__label {
+		font-size: 19px
+	}
+
+	.docs-tl-card {
+		padding: 20px 20px 20px
+	}
+}
